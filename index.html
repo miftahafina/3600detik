@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3600detik</title>
+</head>
+
+<body onload="setInterval(hitung, 1000)">
+
+<h1 id="app">3600</h1>
+
+</body>
+
+<script>
+var detik = 3600;
+
+function hitung() {
+  detik -= 1;
+  document.getElementById('app').innerHTML = detik;
+}
+</script>
+
+</html>
