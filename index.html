@@ -21,11 +21,19 @@
     font-size: 7rem !important;
   }
 
+  #second_progress {
+    display: none;
+  }
+
   .footer {
     position: absolute;
     bottom: 0;
     padding: 2rem 1.5rem 2rem !important;
     width: 100%;
+  }
+
+  .rotate {
+    transform: rotate(90deg);
   }
   </style>
 </head>
@@ -36,17 +44,21 @@
 
     <div class="columns">
       <div class="column has-text-centered">
-          <h1 id="second_text" class="title is-size-super has-text-weight-light">3600</h1>
-          <progress id="second_progress" class="progress is-primary" value="" max="3600"></progress>
-          <button id="start_button" class="button is-primary is-outlined is-large has-text-weight-light is-rounded" onclick="start()">Mulai</button>
+        <h1 id="second_text" class="title is-size-super has-text-weight-light">3600</h1>
+        <progress id="second_progress" class="progress is-primary" value="" max="3600"></progress>
+        <button id="start_button" class="button is-primary is-outlined is-large has-text-weight-light is-rounded" onclick="start()">Mulai</button>
       </div>
     </div>
 
     <div class="columns">
       <div class="column has-text-centered">
-          <p class="has-text-weight-light">
+          <p id="tips_text" class="has-text-weight-light">
             Cukup luangkan waktu selama 3600 detik setiap hari untuk membaca
           </p>
+
+          <audio id="audio">
+            <source src="hotline_bling.mp3" type="audio/mpeg">
+          </audio>
       </div>
     </div>
 
@@ -55,8 +67,9 @@
 
 <footer class="footer">
   <div class="content has-text-centered">
-    <p>
-      Made with <i class="fas fa-heart"></i> by <a href="https://miftahafina.com">Miftah Afina</a>.
+    <p class="has-text-weight-light">
+      Made with <i class="fas fa-heart has-text-danger"></i>
+      by <a href="https://miftahafina.com">Miftah Afina</a>.
     </p>
   </div>
 </footer>
@@ -64,10 +77,12 @@
 
 <script>
 var second = 3600;
+var interval;
 
 function start() {
-  var interval = setInterval(count, 1000);
-  document.getElementById('start_button').style.visibility = 'hidden';
+  interval = setInterval(count, 1000);
+  document.getElementById('start_button').style.display = 'none';
+  document.getElementById('second_progress').style.display = 'block';
   console.log('start');
 }
 
@@ -75,6 +90,17 @@ function count() {
   second -= 1;
   document.getElementById('second_text').innerHTML = second;
   document.getElementById('second_progress').setAttribute('value', second);
+
+  if (second <= 0) {
+    clearInterval(interval);
+    document.getElementById('second_text').innerHTML = ':)';
+    document.getElementById('second_text').classList.add('rotate');
+    document.getElementById('tips_text').innerHTML = 'Yay, kamu berhasil meluangkan waktu selama 3600 detik untuk membaca!';
+    window.navigator.vibrate([200,50,200,50]);
+
+    document.getElementById('audio').play();
+    console.log('count: sudah cukup');
+  }
 }
 </script>
 
