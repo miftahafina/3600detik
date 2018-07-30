@@ -79,26 +79,36 @@
 var second = 3600;
 var interval;
 
+var second_text     = document.getElementById('second_text');
+var start_button    = document.getElementById('start_button');
+var second_progress = document.getElementById('second_progress');
+var tips_text       = document.getElementById('tips_text');
+var audio           = document.getElementById('audio');
+
 function start() {
   interval = setInterval(count, 1000);
-  document.getElementById('start_button').style.display = 'none';
-  document.getElementById('second_progress').style.display = 'block';
+
+  start_button.style.display    = 'none';
+  second_progress.style.display = 'block';
   console.log('start');
 }
 
 function count() {
   second -= 1;
-  document.getElementById('second_text').innerHTML = second;
-  document.getElementById('second_progress').setAttribute('value', second);
+
+  second_text.innerHTML = second;
+  second_progress.setAttribute('value', second);
 
   if (second <= 0) {
     clearInterval(interval);
-    document.getElementById('second_text').innerHTML = ':)';
-    document.getElementById('second_text').classList.add('rotate');
-    document.getElementById('tips_text').innerHTML = 'Yay, kamu berhasil meluangkan waktu selama 3600 detik untuk membaca!';
+
+    second_text.innerHTML = ':)';
+    second_text.classList.add('rotate');
+    tips_text.innerHTML = 'Yay, kamu berhasil meluangkan waktu selama 3600 detik untuk membaca!';
+    
     window.navigator.vibrate([200,50,200,50]);
 
-    document.getElementById('audio').play();
+    audio.play();
     console.log('count: sudah cukup');
   }
 }
