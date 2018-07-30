@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>3600detik</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+  <style>
+  .is-size-super {
+    font-size: 7rem !important;
+  }
+  </style>
 </head>
 
 <body>
@@ -15,7 +20,7 @@
 
     <div class="columns">
       <div class="column has-text-centered">
-          <h1 id="second_text" class="title is-size-1 has-text-weight-light">3600</h1>
+          <h1 id="second_text" class="title is-size-super has-text-weight-light">3600</h1>
           <progress id="second_progress" class="progress is-primary" value="" max="3600"></progress>
           <button id="start_button" class="button is-primary is-outlined is-large has-text-weight-light is-rounded" onclick="start()">Mulai</button>
       </div>
