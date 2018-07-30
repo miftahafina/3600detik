@@ -7,16 +7,22 @@
   <title>3600detik</title>
 </head>
 
-<body onload="setInterval(hitung, 1000)">
+<body>
 
 <h1 id="app">3600</h1>
+<button onclick="start()">Start</button>
 
 </body>
 
 <script>
 var detik = 3600;
 
-function hitung() {
+function start() {
+  var interval = setInterval(count, 1000);
+  console.log('start');
+}
+
+function count() {
   detik -= 1;
   document.getElementById('app').innerHTML = detik;
 }
