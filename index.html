@@ -10,7 +10,7 @@
 <body>
 
 <h1 id="app">3600</h1>
-<button onclick="start()">Start</button>
+<button id="start_button" onclick="start()">Start</button>
 
 </body>
 
@@ -19,6 +19,7 @@ var detik = 3600;
 
 function start() {
   var interval = setInterval(count, 1000);
+  document.getElementById('start_button').style.display = 'none';
   console.log('start');
 }
 
