@@ -5,27 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>3600detik</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 </head>
 
 <body>
+<section class="section">
+  <div class="container">
 
-<h1 id="app">3600</h1>
-<button id="start_button" onclick="start()">Start</button>
+    <div class="columns">
+      <div class="column has-text-centered">
+          <h1 id="second_text" class="title is-size-1 has-text-weight-light">3600</h1>
+          <progress id="second_progress" class="progress is-primary" value="" max="3600"></progress>
+          <button id="start_button" class="button is-primary is-outlined is-large has-text-weight-light is-rounded" onclick="start()">Mulai</button>
+      </div>
+    </div>
 
+    <div class="columns">
+      <div class="column has-text-centered">
+          <p class="has-text-weight-light">
+            Cukup luangkan waktu selama 3600 detik setiap hari untuk membaca
+          </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      Made with <i class="fas fa-heart"></i> by <a href="https://miftahafina.com">Miftah Afina</a>.
+    </p>
+  </div>
+</footer>
 </body>
 
 <script>
-var detik = 3600;
+var second = 3600;
 
 function start() {
   var interval = setInterval(count, 1000);
-  document.getElementById('start_button').style.display = 'none';
+  document.getElementById('start_button').style.visibility = 'hidden';
   console.log('start');
 }
 
 function count() {
-  detik -= 1;
-  document.getElementById('app').innerHTML = detik;
+  second -= 1;
+  document.getElementById('second_text').innerHTML = second;
+  document.getElementById('second_progress').setAttribute('value', second);
 }
 </script>
 
